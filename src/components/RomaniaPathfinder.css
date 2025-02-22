@@ -1,0 +1,77 @@
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 64rem;
+    margin: 1rem auto;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.select-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.select-group {
+    flex: 1;
+}
+
+.select-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.algorithm-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.result-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.result-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.result-path {
+    margin-bottom: 0.5rem;
+}
+
+.result-cost {
+    margin-bottom: 0.25rem;
+}
+
+.nodes-expanded {
+    font-size: 0.875rem;
+    color: #666;
+}
