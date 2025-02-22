@@ -115,7 +115,6 @@ const straightLineDistances = {
   Zerind: 374
 };
 
-// Breadth-first search implementation
 const bfs = (graph, start, goal) => {
   const queue = [[start, [start]]];
   const visited = new Set();
@@ -126,7 +125,6 @@ const bfs = (graph, start, goal) => {
     const [current, path] = queue.shift();
     
     if (current === goal) {
-      // Calculate total cost for the final path
       let totalCost = 0;
       for (let i = 0; i < path.length - 1; i++) {
         totalCost += graph[path[i]][path[i + 1]];
@@ -137,7 +135,6 @@ const bfs = (graph, start, goal) => {
     if (!visited.has(current)) {
       visited.add(current);
       
-      // Get all neighbors and add them to queue
       const neighbors = Object.keys(graph[current]);
       for (const neighbor of neighbors) {
         if (!visited.has(neighbor)) {
@@ -154,14 +151,13 @@ const bfs = (graph, start, goal) => {
   return null;
 };
 
-// Uniform cost search implementation
 const ucs = (graph, start, goal) => {
-  const pQueue = [[0, start, [start]]];  // [cost, node, path]
+  const pQueue = [[0, start, [start]]]; 
   const visited = new Set();
   const expandedNodes = new Set();
 
   while (pQueue.length > 0) {
-    pQueue.sort((a, b) => a[0] - b[0]); // Sort by cost
+    pQueue.sort((a, b) => a[0] - b[0]); 
     const [cost, current, path] = pQueue.shift();
     
     if (current === goal) {
@@ -184,14 +180,13 @@ const ucs = (graph, start, goal) => {
   return null;
 };
 
-// Greedy best-first search implementation
 const gbfs = (graph, start, goal) => {
-  const pQueue = [[straightLineDistances[start], start, [start], 0]];  // [heuristic, node, path, actualCost]
+  const pQueue = [[straightLineDistances[start], start, [start], 0]]; 
   const visited = new Set();
   const expandedNodes = new Set();
 
   while (pQueue.length > 0) {
-    pQueue.sort((a, b) => a[0] - b[0]); // Sort by heuristic value only
+    pQueue.sort((a, b) => a[0] - b[0]); 
     const [h, current, path, actualCost] = pQueue.shift();
     
     if (current === goal) {
@@ -206,7 +201,7 @@ const gbfs = (graph, start, goal) => {
         if (!visited.has(neighbor)) {
           const newActualCost = actualCost + graph[current][neighbor];
           pQueue.push([
-            straightLineDistances[neighbor], // Only consider heuristic for sorting
+            straightLineDistances[neighbor],
             neighbor,
             [...path, neighbor],
             newActualCost
@@ -219,16 +214,14 @@ const gbfs = (graph, start, goal) => {
   return null;
 };
 
-// Iterative deepening depth-first search implementation
 const iddfs = (graph, start, goal) => {
-  const depthLimit = 20; // Reasonable limit for this map
+  const depthLimit = 20; 
   let totalExpandedNodes = 0;
   
   for (let depth = 0; depth <= depthLimit; depth++) {
     const visited = new Set();
     const result = dls(graph, start, goal, depth, [start], 0, visited);
     if (result) {
-      // Calculate actual path cost
       let pathCost = 0;
       const path = result.path;
       for (let i = 0; i < path.length - 1; i++) {
